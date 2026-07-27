@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume Review — CareerCompass AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); max-width: 960px; }
+    @media (max-width: 900px) { .review-grid { grid-template-columns: 1fr; } }
+    .result-item { display: flex; gap: var(--space-2); align-items: flex-start; margin-bottom: var(--space-3); font-size: var(--text-sm); }
+  </style>
+</head>
+<body data-page="resume">
+
+  <div class="app-shell">
+    <div id="sidebar-slot"></div>
+
+    <main class="app-main">
+      <div class="page-header">
+        <h1>Resume Review</h1>
+        <p>Paste your resume text below and get structured feedback.</p>
+      </div>
+
+      <div class="review-grid">
+        <form id="resume-form" class="card">
+          <div class="field">
+            <label for="resume-text">Resume Text</label>
+            <textarea id="resume-text" placeholder="Paste your resume content here..."></textarea>
+          </div>
+          <button type="submit" id="review-btn" class="btn btn-primary">Review Resume</button>
+          <div id="resume-status" class="status-message" hidden></div>
+        </form>
+
+        <div class="card">
+          <h3>Feedback</h3>
+          <div id="resume-results">
+            <p class="empty-state">Paste your resume and click "Review Resume" to see feedback here.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/load-partials.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/resume.js"></script>
+</body>
+</html>

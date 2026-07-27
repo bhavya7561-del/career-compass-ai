@@ -1,0 +1,21 @@
+# Environment secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Database
+database/*.db
+!database/.gitkeep
+
+# Docker
+*.log
+
+# OS / editor noise
+.DS_Store
+.vscode/
+.idea/

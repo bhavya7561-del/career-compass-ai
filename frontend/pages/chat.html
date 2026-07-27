@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Chat — CareerCompass AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .chat-window { display: flex; flex-direction: column; height: calc(100vh - 220px); max-width: 720px; }
+    .chat-messages { flex: 1; overflow-y: auto; padding-right: var(--space-2); }
+    .msg { max-width: 80%; padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); margin-bottom: var(--space-4); font-size: var(--text-sm); }
+    .msg-user { background: var(--color-primary); color: #fff; margin-left: auto; }
+    .msg-ai { background: var(--color-surface); border: 1px solid var(--color-border); }
+    .chat-input-row { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
+    .chat-input-row input { flex: 1; }
+  </style>
+</head>
+<body data-page="chat">
+
+  <div class="app-shell">
+    <div id="sidebar-slot"></div>
+
+    <main class="app-main">
+      <div class="page-header">
+        <h1>AI Career Chat</h1>
+        <p>Ask anything about roadmaps, skills, or certifications for your goal.</p>
+      </div>
+
+      <div class="chat-window card">
+        <div id="chat-messages" class="chat-messages">
+          <div class="msg msg-ai">Hi! Ask me anything about your career path, skills, or certifications.</div>
+        </div>
+        <div id="chat-status" class="status-message" hidden></div>
+        <form id="chat-form" class="field" style="margin: 0;">
+          <div class="chat-input-row">
+            <input type="text" id="chat-input" placeholder="Ask a career question..." autocomplete="off" />
+            <button type="submit" id="chat-send-btn" class="btn btn-primary">Send</button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/load-partials.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/chat.js"></script>
+</body>
+</html>

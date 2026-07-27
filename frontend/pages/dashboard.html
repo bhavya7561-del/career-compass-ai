@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — CareerCompass AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css" />
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+  <style>
+    .tool-card { max-width: 640px; margin-top: var(--space-6); }
+    .tool-input-row { display: flex; gap: var(--space-3); }
+    .tool-input-row input { flex: 1; }
+    .stage-label { font-size: var(--text-xs); font-weight: 600; color: var(--color-slate); text-transform: uppercase; letter-spacing: 0.03em; margin: var(--space-4) 0 var(--space-2); }
+    .tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+    .stage-resources { padding-left: var(--space-4); font-size: var(--text-sm); color: var(--color-slate); margin: 0; }
+    .roadmap-stage { padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border); }
+    .roadmap-stage:last-child { border-bottom: none; }
+    .roadmap-stage h4 { font-family: var(--font-body); font-size: var(--text-base); margin: 0; color: var(--color-navy); }
+    .stage-duration { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-slate); font-weight: 400; }
+  </style>
+</head>
+<body data-page="dashboard">
+
+  <div class="app-shell">
+    <div id="sidebar-slot"></div>
+
+    <main class="app-main">
+      <div class="page-header">
+        <h1>Your Profile</h1>
+        <p>This information shapes every roadmap, skill analysis, and recommendation CareerCompass gives you.</p>
+      </div>
+
+      <form id="profile-form" class="card" style="max-width: 640px;">
+        <div class="field">
+          <label for="branch">Branch</label>
+          <select id="branch" name="branch">
+            <option value="">Select your branch</option>
+            <option>Computer Science (CSE)</option>
+            <option>Electronics & Communication (ECE)</option>
+            <option>Information Technology (IT)</option>
+            <option>Mechanical</option>
+            <option>Civil</option>
+            <option>Electrical & Electronics (EEE)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="semester">Semester</label>
+          <select id="semester" name="semester">
+            <option value="">Select semester</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="skills">Current Skills</label>
+          <input type="text" id="skills" name="skills" placeholder="e.g. Python, C, HTML/CSS" />
+        </div>
+
+        <div class="field">
+          <label for="interests">Interests</label>
+          <input type="text" id="interests" name="interests" placeholder="e.g. AI, Embedded Systems, Cloud" />
+        </div>
+
+        <div class="field">
+          <label for="goal">Career Goal</label>
+          <input type="text" id="goal" name="goal" placeholder="e.g. AI Engineer, VLSI Engineer" />
+        </div>
+
+        <button type="submit" id="profile-save-btn" class="btn btn-primary">Save Profile</button>
+        <div id="profile-status" class="status-message" hidden></div>
+      </form>
+
+      <div class="card tool-card">
+        <h3>Generate a Learning Roadmap</h3>
+        <p style="font-size: var(--text-sm);">Enter a target domain to get a phased, semester-friendly roadmap.</p>
+        <div class="tool-input-row">
+          <input type="text" id="roadmap-domain" placeholder="e.g. AI/ML, VLSI, Cybersecurity" />
+          <button type="button" id="roadmap-btn" class="btn btn-primary">Generate Roadmap</button>
+        </div>
+        <div id="roadmap-status" class="status-message" hidden></div>
+        <div id="roadmap-results"></div>
+      </div>
+
+      <div class="card tool-card">
+        <h3>Skill Gap Analysis</h3>
+        <p style="font-size: var(--text-sm);">Enter a target role to see which skills you have and which you're missing.</p>
+        <div class="tool-input-row">
+          <input type="text" id="target-role" placeholder="e.g. Data Scientist, Embedded Systems Engineer" />
+          <button type="button" id="skill-gap-btn" class="btn btn-primary">Analyze Skill Gap</button>
+        </div>
+        <div id="skill-gap-status" class="status-message" hidden></div>
+        <div id="skill-gap-results"></div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/load-partials.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui-helpers.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -53,6 +53,29 @@ app.mount("/static", StaticFiles(directory="frontend"), name="static")
 def home():
     return FileResponse("frontend/index.html")
 
+@app.get("/pages/dashboard.html")
+def dashboard():
+    return FileResponse("frontend/pages/dashboard.html")
+
+
+@app.get("/pages/chat.html")
+def chat():
+    return FileResponse("frontend/pages/chat.html")
+
+
+@app.get("/pages/about.html")
+def about():
+    return FileResponse("frontend/pages/about.html")
+
+
+@app.get("/pages/history.html")
+def history_page():
+    return FileResponse("frontend/pages/history.html")
+
+
+@app.get("/pages/resume.html")
+def resume():
+    return FileResponse("frontend/pages/resume.html")
 # Allow the frontend (served separately) to call this API during development.
 # Locked down further before deployment.
 app.add_middleware(

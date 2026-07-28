@@ -6,7 +6,7 @@
 const CCApi = (() => {
   // Backend runs on port 8000 regardless of what port/host serves the frontend
   // (localhost in dev via docker-compose, an EC2 public IP/domain in production).
-  const API_BASE = `${window.location.protocol}//${window.location.hostname}:8000`;
+  const API_BASE = window.location.origin;
 
   class ApiError extends Error {
     constructor(message, status) {

@@ -9,7 +9,7 @@ async function loadSidebar() {
   if (!slot) return;
 
   try {
-    const response = await fetch("../partials/sidebar.html");
+    const response = await fetch("/static/partials/sidebar.html");
     if (!response.ok) throw new Error(`Failed to load sidebar: ${response.status}`);
     slot.innerHTML = await response.text();
 

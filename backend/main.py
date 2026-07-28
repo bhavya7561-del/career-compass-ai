@@ -16,6 +16,8 @@ from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 # In Docker, docker-compose's env_file already injects these vars, so this is a
 # no-op there. It matters when running `uvicorn` directly on a host machine.
@@ -44,6 +46,12 @@ app = FastAPI(
     description="AI Career Mentor for Engineering Students",
     version="0.4.0",
 )
+# Serve frontend
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+@app.get("/")
+def home():
+    return FileResponse("frontend/index.html")
 
 # Allow the frontend (served separately) to call this API during development.
 # Locked down further before deployment.
